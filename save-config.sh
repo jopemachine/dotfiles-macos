@@ -25,17 +25,11 @@ copyConfig "starship"          ~/.config/starship.toml           ./configs/stars
 
 copyConfig "tmux"              ~/.tmux.conf                      ./configs/tmux/.tmux.conf
 copyConfig "ranger"            ~/.config/ranger/rc.conf          ./configs/ranger/rc.conf
-copyConfig "git"               ~/.gitconfig                      ./configs/git/.gitconfig
-copyConfig "chrome extensions" ~/Downloads/extensions.html       ./configs/chrome/chrome-extensions.html
-# copyConfig "vimium-c"          ~/Downloads/vimium_c*             ../configs/chrome/vimium-c/
 
 # legacy
 copyConfig "vim"               ~/.vimrc                          ./configs/legacy/vim/.vimrc
 copyConfig "neovim"            ~/.config/nvim/init.vim           ./configs/legacy/neovim/init.vim
 copyConfig "bash"              ~/.bashrc                         ./configs/legacy/bash/.bashrc
 copyConfig "zsh"               ~/.zshrc                          ./configs/legacy/zsh/.zshrc
-
-# export vscode extensions
-code --list-extensions | xargs -L 1 >                            ./configs/vscode/vscode-extensions
 
 # git add . && git commit -m "🔨 Update configs" && git push origin master --force

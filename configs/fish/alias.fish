@@ -14,7 +14,7 @@ alias python='python3'
 alias pip='pip3'
 
 # vim
-alias vi='lvim'
+alias vi='vim'
 alias vim='lvim'
 alias nvim='lvim'
 

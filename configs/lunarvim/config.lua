@@ -116,11 +116,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- which-key.nvim
 -- *
 
-lvim.builtin.which_key.mappings["q"] = { ":wqa<cr>", "Quit" }
 lvim.builtin.which_key.mappings["Q"] = { ":qa!<cr>", "Quit without saving" }
-
--- Telescope key settings
-lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 
 -- Trouble key settings
 lvim.builtin.which_key.mappings["t"] = {
@@ -143,22 +139,38 @@ lvim.builtin.which_key.mappings["u"] = {
 	t = { ":ToggleTerm size=10 direction=horizontal<cr>", "Toggle Horizontal Terminal" },
 	n = { ":IncRename ", "Rename Variable" },
 	c = { ":!code %<cr>", "Open in Code" },
-	m = { ":Telescope keymaps<cr>", "Open Keymap" },
 }
 
 -- Toggle vim options
 lvim.builtin.which_key.mappings["v"] = {
 	name = "Vim options",
 	s = { ":set spell!<cr>", "Toggle Spell Check" },
-	v = { ":Telescope vim_options<cr>", "View Vim Options" },
 	e = { ":set expandtab!<cr>", "Toggle Expandtab" },
 }
 
--- Code manipulate
-lvim.builtin.which_key.mappings["C"] = {
+-- Code manipulate (overwrite lunarvim mapping)
+lvim.builtin.which_key.mappings["c"] = {
 	name = "Code manipulate",
 	s = { ":SplitjoinSplit<cr>", "Switch Function to Multiline" },
 	j = { ":SplitjoinJoin<cr>", "Switch Function to Singleline" },
+}
+
+-- Telescope key settings
+lvim.builtin.which_key.mappings["s"] = {
+  name = "Telescope",
+  h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
+  M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
+  R = { "<cmd>Telescope registers<cr>", "Registers" },
+  t = { "<cmd>Telescope live_grep<cr>", "Text" },
+  k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+  P = { "<cmd>Telescope projects<CR>", "Projects" },
+	v = { ":Telescope vim_options<cr>", "View Vim Options" },
+  -- f = { "<cmd>Telescope find_files<cr>", "Find File" },
+  -- b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
+  -- H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
+  -- r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+  -- C = { "<cmd>Telescope commands<cr>", "Commands" },
+  -- c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
 }
 
 -- *
@@ -271,7 +283,12 @@ lvim.plugins = {
 
   -- Code manipulation
   { "junegunn/vim-easy-align" },
-  { "smjonas/inc-rename.nvim" },
+  {
+    "smjonas/inc-rename.nvim",
+    -- config = function ()
+    --   require("inc_rename").setup()
+    -- end,
+  },
   { "sQVe/sort.nvim" },
 
   -- Window management (including tmux)
