@@ -8,3 +8,7 @@ fish, version 3.4.1
 ranger version: ranger 1.9.3
 starship 1.0.0
 ```
+
+## Other `dotfiles` compilations
+
+- [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)

@@ -1,5 +1,13 @@
+# easier navigation
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
 # overwrite default command
 alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
 alias cat='bat --style=plain --paging=never'
 
 # overwrite ls command
@@ -50,3 +58,6 @@ alias grb='git rebase'
 alias grh='git reset'
 alias gss='git stash show'
 alias grh1='git reset --hard HEAD~1'
+
+# chrome
+alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
