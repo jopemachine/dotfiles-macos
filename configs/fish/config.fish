@@ -32,25 +32,3 @@ end
 set fzf_preview_dir_cmd exa --all --color=always
 set fzf_fd_opts --type=directory -H -d=3 --follow --exclude=.git --exclude=node_modules
 
-## vim-obsession setting
-function vim
-  if set -q argv[1]
-    eval lvim $argv[1..-1]
-  else if test -f Session.vim
-    echo "Open Existing Session.."
-    eval lvim -S
-  else
-    echo "Record New Session.."
-    eval lvim -c Obsession
-  end
-end
-
-## github
-function github
-  open "https://github.com/search?q=$argv[1..-1]"
-end
-
-## papago
-function papago
-  open "https://papago.naver.com/?st=$argv[1..-1]"
-end

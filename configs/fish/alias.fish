@@ -1,7 +1,19 @@
+# ------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------
+# --------------------------------------Aliases---------------------------------------------
+# ------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------
+
 # easier navigation
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+
+# shortcuts
+alias chmox='chmod -x'
+alias ag='ag -f --hidden'
+alias fs="stat -f \"%z bytes\""
+alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 
 # overwrite default command
 alias grep='grep --color=auto'
@@ -22,6 +34,7 @@ alias python='python3'
 alias pip='pip3'
 
 # vim
+alias v='vim'
 alias vi='vim'
 alias vim='lvim'
 alias nvim='lvim'
@@ -48,6 +61,7 @@ alias ssh='TERM=xterm-256color /usr/bin/ssh'
 
 # git
 alias g='git'
+alias gp='git push'
 alias ga='git add'
 alias gcb='git checkout -b'
 alias gcmsg='git commit -m'
@@ -59,5 +73,40 @@ alias grh='git reset'
 alias gss='git stash show'
 alias grh1='git reset --hard HEAD~1'
 
-# chrome
-alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+# ------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------
+# ------------------------------------Functions---------------------------------------------
+# ------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------
+
+# function clone
+#   git clone --depth=1 $1
+#   cd $(basename ${1%.*})
+# end
+
+# function md
+# 	mkdir -p "$@" && cd "$@"
+# end
+
+## vim-obsession setting
+function vim
+  if set -q argv[1]
+    eval lvim $argv[1..-1]
+  else if test -f Session.vim
+    echo "Open Existing Session.."
+    eval lvim -S
+  else
+    echo "Record New Session.."
+    eval lvim -c Obsession
+  end
+end
+
+## github
+function github
+  open "https://github.com/search?q=$argv[1..-1]"
+end
+
+## papago
+function papago
+  open "https://papago.naver.com/?st=$argv[1..-1]"
+end
