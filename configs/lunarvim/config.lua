@@ -52,7 +52,7 @@ lvim.keys.insert_mode["jk"] = false
 
 -- 셀렉션에 paste 하더라도 기존 텍스트 유지
 vim.cmd([[
-	vnoremap <leader>p "_dP
+  vnoremap <leader>p "_dP
 ]])
 
 ------------------------------------------------------------------------------------------
@@ -117,42 +117,43 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- *
 
 lvim.builtin.which_key.mappings["Q"] = { ":qa!<cr>", "Quit without saving" }
+lvim.builtin.which_key.mappings["f"] = { require("lvim.lsp.utils").format, "Format code" }
+lvim.builtin.which_key.mappings["r"] = { vim.lsp.buf.rename, "Rename variable" }
 
 -- Trouble key settings
 lvim.builtin.which_key.mappings["t"] = {
-	name = "+Trouble",
-	r = { "<cmd>Trouble lsp_references<cr>", "References" },
-	f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
-	d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
-	q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
-	l = { "<cmd>Trouble loclist<cr>", "LocationList" },
-	w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
+  name = "+Trouble",
+  r = { "<cmd>Trouble lsp_references<cr>", "References" },
+  f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
+  d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
+  q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
+  l = { "<cmd>Trouble loclist<cr>", "LocationList" },
+  w = { "<cmd>Trouble workspace_diagnostics<cr>", "Wordspace Diagnostics" },
 }
 
 -- Other thirdparty utilities key settings
 lvim.builtin.which_key.mappings["u"] = {
-	name = "Thirdparty utilities",
-	u = { ":UndotreeToggle<cr>:UndotreeFocus<cr>", "Undotree" },
-	g = { ":Glow<cr>", "Glow Window" },
-	b = { ":GitBlameToggle<cr>", "Toggle GitBlame Plugin" },
-	a = { ":Ranger<cr>", "Ranger" },
-	t = { ":ToggleTerm size=10 direction=horizontal<cr>", "Toggle Horizontal Terminal" },
-	n = { ":IncRename ", "Rename Variable" },
-	c = { ":!code %<cr>", "Open in Code" },
+  name = "Thirdparty utilities",
+  u = { ":UndotreeToggle<cr>:UndotreeFocus<cr>", "Undotree" },
+  g = { ":Glow<cr>", "Glow Window" },
+  b = { ":GitBlameToggle<cr>", "Toggle GitBlame Plugin" },
+  a = { ":Ranger<cr>", "Ranger" },
+  t = { ":ToggleTerm size=10 direction=horizontal<cr>", "Toggle Horizontal Terminal" },
+  c = { ":!code %<cr>", "Open in Code" },
 }
 
 -- Toggle vim options
 lvim.builtin.which_key.mappings["v"] = {
-	name = "Vim options",
-	s = { ":set spell!<cr>", "Toggle Spell Check" },
-	e = { ":set expandtab!<cr>", "Toggle Expandtab" },
+  name = "Vim options",
+  s = { ":set spell!<cr>", "Toggle Spell Check" },
+  e = { ":set expandtab!<cr>", "Toggle Expandtab" },
 }
 
 -- Code manipulate (overwrite lunarvim mapping)
 lvim.builtin.which_key.mappings["c"] = {
-	name = "Code manipulate",
-	s = { ":SplitjoinSplit<cr>", "Switch Function to Multiline" },
-	j = { ":SplitjoinJoin<cr>", "Switch Function to Singleline" },
+  name = "Code manipulate",
+  s = { ":SplitjoinSplit<cr>", "Switch Function to Multiline" },
+  j = { ":SplitjoinJoin<cr>", "Switch Function to Singleline" },
 }
 
 -- Telescope key settings
@@ -164,7 +165,7 @@ lvim.builtin.which_key.mappings["s"] = {
   t = { "<cmd>Telescope live_grep<cr>", "Text" },
   k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
   P = { "<cmd>Telescope projects<CR>", "Projects" },
-	v = { ":Telescope vim_options<cr>", "View Vim Options" },
+  v = { ":Telescope vim_options<cr>", "View Vim Options" },
   -- f = { "<cmd>Telescope find_files<cr>", "Find File" },
   -- b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
   -- H = { "<cmd>Telescope highlights<cr>", "Find highlight groups" },
@@ -185,18 +186,18 @@ lvim.lsp.automatic_servers_installation = true
 -- we use protected-mode (pcall) just in case the plugin wasn't loaded yet.
 -- local _, actions = pcall(require, "telescope.actions")
 -- lvim.builtin.telescope.defaults.mappings = {
---	 -- for input mode
---	 i = {
---		 ["<C-j>"] = actions.move_selection_next,
---		 ["<C-k>"] = actions.move_selection_previous,
---		 ["<C-n>"] = actions.cycle_history_next,
---		 ["<C-p>"] = actions.cycle_history_prev,
---	 },
---	 -- for normal mode
---	 n = {
---		 ["<C-j>"] = actions.move_selection_next,
---		 ["<C-k>"] = actions.move_selection_previous,
---	 },
+--   -- for input mode
+--   i = {
+--     ["<C-j>"] = actions.move_selection_next,
+--     ["<C-k>"] = actions.move_selection_previous,
+--     ["<C-n>"] = actions.cycle_history_next,
+--     ["<C-p>"] = actions.cycle_history_prev,
+--   },
+--   -- for normal mode
+--   n = {
+--     ["<C-j>"] = actions.move_selection_next,
+--     ["<C-k>"] = actions.move_selection_previous,
+--   },
 -- }
 
 -- ---configure a server manually. !!Requires `:LvimCacheReset` to take effect!!
@@ -208,37 +209,37 @@ lvim.lsp.automatic_servers_installation = true
 -- ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
 -- ---`:LvimInfo` lists which server(s) are skiipped for the current filetype
 -- vim.tbl_map(function(server)
---	 return server ~= "emmet_ls"
+--   return server ~= "emmet_ls"
 -- end, lvim.lsp.automatic_configuration.skipped_servers)
 
 -- -- you can set a custom on_attach function that will be used for all the language servers
 -- -- See <https://github.com/neovim/nvim-lspconfig#keybindings-and-completion>
 -- lvim.lsp.on_attach_callback = function(client, bufnr)
---	 local function buf_set_option(...)
---		 vim.api.nvim_buf_set_option(bufnr, ...)
---	 end
---	 --Enable completion triggered by <c-x><c-o>
---	 buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
+--   local function buf_set_option(...)
+--     vim.api.nvim_buf_set_option(bufnr, ...)
+--   end
+--   --Enable completion triggered by <c-x><c-o>
+--   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
 
 -- set a formatter, this will override the language server formatting capabilities (if it exists)
 -- local formatters = require "lvim.lsp.null-ls.formatters"
 -- formatters.setup {
---	 {
---		 command = "prettier",
---		 ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
---		 filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
---	 },
+--   {
+--     command = "prettier",
+--     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+--     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+--   },
 -- }
 
 -- set additional linters
 -- local linters = require "lvim.lsp.null-ls.linters"
 -- linters.setup {
---	 {
---		 command = "xo",
---		 ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
---		 filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
---	 },
+--   {
+--     command = "xo",
+--     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
+--     filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+--   },
 -- }
 
 ------------------------------------------------------------------------------------------
@@ -280,12 +281,12 @@ lvim.plugins = {
       require("indent_blankline").setup {
         char = "",
         char_highlight_list = {
-            "IndentBlanklineIndent1",
-            "IndentBlanklineIndent2",
+          "IndentBlanklineIndent1",
+          "IndentBlanklineIndent2",
         },
         space_char_highlight_list = {
-            "IndentBlanklineIndent1",
-            "IndentBlanklineIndent2",
+          "IndentBlanklineIndent1",
+          "IndentBlanklineIndent2",
         },
       }
     end
@@ -293,12 +294,6 @@ lvim.plugins = {
 
   -- Code manipulation
   { "junegunn/vim-easy-align" },
-  {
-    "smjonas/inc-rename.nvim",
-    -- config = function ()
-    --   require("inc_rename").setup()
-    -- end,
-  },
   { "sQVe/sort.nvim" },
 
   -- Window management (including tmux)
@@ -383,7 +378,7 @@ lvim.plugins = {
   -- Search string
   {
     "nvim-pack/nvim-spectre",
-    config = function ()
+    config = function()
       vim.cmd("nnoremap <C-F> :<cmd>lua require('spectre').open()<CR><CR>")
     end
   },
@@ -392,8 +387,8 @@ lvim.plugins = {
   { "kdheepak/lazygit.nvim" },
   {
     "f-person/git-blame.nvim",
-    config = function ()
-        vim.cmd("let g:gitblame_enabled = 0")
+    config = function()
+      vim.cmd("let g:gitblame_enabled = 0")
     end
   },
 
