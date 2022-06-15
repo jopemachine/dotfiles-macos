@@ -272,11 +272,21 @@ lvim.plugins = {
       vim.opt.list = true
       vim.opt.listchars:append("space:⋅")
       vim.opt.listchars:append("eol:↴")
+      vim.opt.termguicolors = true
+
+      vim.cmd [[highlight IndentBlanklineIndent1 guibg=#1f1f1f gui=nocombine]]
+      vim.cmd [[highlight IndentBlanklineIndent2 guibg=#1a1a1a gui=nocombine]]
 
       require("indent_blankline").setup {
-        space_char_blackline = " ",
-        show_current_context = true,
-        show_current_context_start = true,
+        char = "",
+        char_highlight_list = {
+            "IndentBlanklineIndent1",
+            "IndentBlanklineIndent2",
+        },
+        space_char_highlight_list = {
+            "IndentBlanklineIndent1",
+            "IndentBlanklineIndent2",
+        },
       }
     end
   },
@@ -343,12 +353,6 @@ lvim.plugins = {
     end
   },
   {
-    "windwp/nvim-ts-autotag",
-    config = function()
-      require('nvim-ts-autotag').setup()
-    end
-  },
-  {
     "mbbill/undotree",
   },
   {
@@ -403,10 +407,12 @@ lvim.plugins = {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
   },
-}
 
--- Autocommands (https://neovim.io/doc/user/autocmd.html)
--- https://github.com/LunarVim/LunarVim/discussions/2629
--- lvim.autocommands.custom_groups = {
---   { "FileType", "markdown", "set nospell" },
--- }
+  -- Web develop
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end
+  },
+}

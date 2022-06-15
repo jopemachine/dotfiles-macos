@@ -1,5 +1,7 @@
 # dotfiles
 
+There are my miscellaneous config files under the `configs` folder.
+
 ```
 NVIM v0.7.0
 tmux 3.2a
